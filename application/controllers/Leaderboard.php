@@ -13,7 +13,11 @@ class Leaderboard extends CI_Controller {
     public function index() {
         // $this->load->model('Leaderboard_model, leaderboard');
 
-        $data['leaderboard'] = $this->leaderboard->get_leaderboard();
+        // $data['leaderboard'] = $this->leaderboard->get_leaderboard();
+        $standing = $this->leaderboard->getLeaderboard();
+        $data = [
+           'leaderboard' => $standing
+        ];
 
         $this->load->view('templates/header.php');
         $this->load->view('../views/leaderboard.php', $data);

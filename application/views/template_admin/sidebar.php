@@ -93,29 +93,34 @@
       <!-- Main Content -->
       <div id="content">
 
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
+              <i class="fa fa-bars"></i>
           </button>
 
-          <h4 class="font-weight-bold">PT. Multimedia Adiautama Asia</h4>
+          <!-- Logo Image -->
+
+
+          <!-- <h4 class="font-weight-bold">Monitoring SGHC</h4> -->
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
+          <div class="navbar-brand" >
+              <img src="<?php echo base_url('assets/img/logoSG.png'); ?>" alt="LogoSG" style="width: 50px; position:pull-right;">
+          </div>
 
-            <div class="topbar-divider d-none d-sm-block"></div>
-
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Selamat Datang <?php echo $this->session->userdata('nama_pegawai')?></span>
-                <img class="img-profile rounded-circle" src="<?php echo base_url('photo/').$this->session->userdata('photo') ?>">
-              </a>
+              <div class="topbar-divider d-none d-sm-block"></div>
               
-            </li>
+
+              <!-- Nav Item - User Information -->
+              <li class="nav-item dropdown no-arrow">
+                  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="mr-2 d-none d-lg-inline text-gray-600 small">Selamat Datang <?php echo $this->session->userdata('nama_pegawai'); ?></span>
+                      <img class="img-profile rounded-circle" src="<?php echo base_url('photo/') . $this->session->userdata('photo'); ?>">
+                  </a>
+              </li>
 
           </ul>
 

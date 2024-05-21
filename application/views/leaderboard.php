@@ -30,17 +30,17 @@
                                         <tr>
                                             <th width="20px">No</th>
                                             <th>Username</th>
-                                            <th width="200px">Date</th>
                                             <th width="100px">Point</th>
+                                            <th width="100px">Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($leaderboard as $row): ?>
+                                        <?php $no=1; foreach ($leaderboard as $row): ?>
                                         <tr>
-                                            <td><?php echo $row->id; ?></td>
+                                            <td><?php echo $no++; ?></td>
                                             <td><?php echo $row->username; ?></td>
-                                            <td><?php echo $row->score; ?></td>
-                                            <td><?php echo $row->date; ?></td>
+                                            <td><?php echo $row->point; ?></td>
+                                            <!-- <td><?php echo $row->point; ?></td> -->
                                         </tr>
                                         <?php endforeach; ?>
                                     </tbody>
