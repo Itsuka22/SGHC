@@ -24,7 +24,7 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('pegawai/kegiatan') ?>">
           <i class="fas fa-fw fa-file-upload"></i>
-          <span>Upload kegiatan</span></a>
+          <span>Kegiatan</span></a>
       </li>
 
       <!-- Nav Item - Charts -->
