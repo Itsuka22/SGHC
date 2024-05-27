@@ -23,7 +23,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('pegawai/kegiatan') ?>">
-          <i class="fas fa-fw fa-file-upload"></i>
+          <i class="fas fa-fw fa-running"></i>
           <span>Kegiatan</span></a>
       </li>
 

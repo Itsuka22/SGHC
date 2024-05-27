@@ -18,8 +18,10 @@ class Kegiatan extends CI_Controller {
   }
 
   public function index() {
-		$data['title'] = "Data Kegiatan";
-		$data['kegiatan'] = $this->kegiatan->getKegiatan();
+		$data = [
+			'title'    => "Data Kegiatan",
+			'kegiatan' => $this->kegiatan->getKegiatan()
+		]; 
 
     // $data['kegiatan'] = $this->kegiatan->get_kegiatan();
     $this->load->view('template_pegawai/header.php');
@@ -29,8 +31,8 @@ class Kegiatan extends CI_Controller {
   }
 
   public function tambah_kegiatan() {
-
-
+		// $data['title'] = "Tambah Data Pegawai";
+		
     // $data['kegiatan'] = $this->kegiatan->get_kegiatan();
     $this->load->view('template_pegawai/header.php');
     $this->load->view('template_pegawai/sidebar');
@@ -38,58 +40,61 @@ class Kegiatan extends CI_Controller {
     $this->load->view('template_pegawai/footer.php');
   }
 
-  public function upload() {
-    // Load form validation library and set rules for form inputs
-    $this->load->library('form_validation');
-    $this->form_validation->set_rules('nama_kegiatan', 'Nama Kegiatan', 'required');
-    $this->form_validation->set_rules('tanggal', 'Tanggal', 'required');
-    $this->form_validation->set_rules('id_pegawai', 'ID Pegawai', 'required');
+  public function upload_data() {
 
-		if($this->form_validation->run() == FALSE) {
-			$this->tambah_kegiatan();
-		} else {
-			$nkegiatan			= $this->input->post('n_kegiatan');
-			$tanggal	= $this->input->post('tanggal');
-			$gambar		= $_FILES['photo']['name'];
-			if($gambar=''){}else{
-				$config['upload_path'] 		= './photo';
-				$config['allowed_types'] 	= 'jpg|jpeg|png|tiff|heif';
-				$config['max_size']			= 	6048;
-				$config['file_name']		= 	'pegawai-'.date('ymd').'-'.substr(md5(rand()),0,10);
-				$this->load->library('upload',$config);
-				if(!$this->upload->do_upload('photo')){
-					echo "Photo Gagal Diupload !";
-				}else{
-					$gambar=$this->upload->data('file_name');
-				}
-			}
+		$config['upload_path']		= './photo';
+		$config['allowed_types']      = '*';
+		$config['max_size']           = 6048; //max 2mb
+		$this->load->library('upload', $config);
 
-      // Masih tahap modifikasi
-      // Belum ada penambahan logika untuk max upload 1 hari 1 kegiatan
+		// $this->load->library('upload', $config);
+		$this->upload->initialize($config);
 
-			$data = array(
-				'nik' 			=> $nik,
-				'files' 		=> $gambar,
-			);
+		if ($this->upload->do_upload('files')){
+			$data1 		= $this->upload->data();
+			$thumbnail	= $data1['file_name'];
+		}else{
+			$error1 = $this->upload->display_errors();
+		}
 
-			$this->ModelPenggajian->insert_data($data, 'data_pegawai');
+		$id_pegawai = $this->session->userdata('id_pegawai');
+
+		$data = [
+			'id_pegawai' => $id_pegawai,
+			'n_kegiatan'	=> $this->input->post('n_kegiatan', TRUE),
+			'files'	=> $thumbnail,
+			'tanggal'	=> date('Y-m-d H:i:s')
+		];
+		$this->db->insert('tb_activity', $data);
+
+		// print_r($data);
+		// exit();
+
 			$this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
 				<strong>Data berhasil ditambahkan!</strong>
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 				</button>
 				</div>');
-			redirect('admin/data_pegawai');
-		}
+			redirect('pegawai/kegiatan');
+		
 
-    // Load the view with the notification data
-    $this->load->view('upload_result', $data);
 }
 
-public function _rules() {
-  $this->form_validation->set_rules('n_kegiatan','Nama Kegiatan','required');
-  $this->form_validation->set_rules('tanggal','Tanggal','required');
+public function delete_data($id) {
+	$where = array('id_pegawai' => $id);
+	$this->ModelPenggajian->delete_data($where, 'data_pegawai');
+	$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<strong>Data berhasil dihapus!</strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+			</div>');
+		redirect('admin/data_pegawai');
 }
+
+// fix delete button kegiata
+
 
 }
 
