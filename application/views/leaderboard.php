@@ -38,8 +38,8 @@
                                         <?php $no=1; foreach ($leaderboard as $row): ?>
                                         <tr>
                                             <td><?php echo $no++; ?></td>
-                                            <td><?php echo $row->username; ?></td>
-                                            <td><?php echo $row->point; ?></td>
+                                            <td><?php echo $row['username']; ?></td>
+                                            <td><?php echo $row['activity_count']; ?></td>
                                             <!-- <td><?php echo $row->point; ?></td> -->
                                         </tr>
                                         <?php endforeach; ?>

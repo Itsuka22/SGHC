@@ -8,9 +8,9 @@
 
 <div class="container-fluid">
   <div class="card shadow mb-4">
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+   <div class="card-body mr-1">
+     <div class="table-responsive">
+       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead class="thead-dark">
             <tr>
               <th class="text-center">No</th>
@@ -27,12 +27,12 @@
                 <td class="text-center"><?php echo $p['n_kegiatan'] ?></td>
                 <td class="text-center"><?php echo $p['tanggal'] ?></td>
                 <td class="text-center">
-                  <?php $image_path = base_url('photo/' . $p['files']); ?>
+                  <?php $image_path = base_url('assets/upload/' . $p['files']); ?>
                   <img src="<?php echo $image_path; ?>" width="50px">
                 </td> 
                 <td class="text-center">
-                  <a class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a> 
-                  <a onclick="return confirm('Yakin Hapus?')" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                  <a class="btn btn-sm btn-info" href="<?php echo base_url('pegawai/kegiatan/edit/'.$p['id']) ?>"><i class="fas fa-edit"></i></a> 
+                  <a onclick="return confirm('Yakin Hapus?')" class="btn btn-sm btn-danger" href="<?php echo base_url('pegawai/kegiatan/delete/'.$p['id']) ?>"><i class="fas fa-trash"></i></a>
                 </td>
               </tr>
             <?php endforeach; ?>

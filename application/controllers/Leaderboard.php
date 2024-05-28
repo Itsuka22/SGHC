@@ -14,7 +14,7 @@ class Leaderboard extends CI_Controller {
         // $this->load->model('Leaderboard_model, leaderboard');
 
         // $data['leaderboard'] = $this->leaderboard->get_leaderboard();
-        $standing = $this->leaderboard->getLeaderboard();
+        $standing = $this->leaderboard->getLeaderboardData();
         $data = [
            'leaderboard' => $standing
         ];
