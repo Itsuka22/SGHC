@@ -8,7 +8,10 @@ class Login extends CI_Controller {
 		$this->_rules();
 
 		if($this->form_validation->run()==FALSE) {
+			// $this->load->view('templates/header');
 			$this->load->view('login');
+			// $this->load->view('templates/footer');
+
 		}else{
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');

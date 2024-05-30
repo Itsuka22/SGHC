@@ -11,22 +11,19 @@ class Kegiatan_model extends CI_Model {
       $this->db->delete($table);
     }
 
-    public function getDelete($id){
+    public function getDelete($id) {
       $get_where = $this->db->get_where('tb_activity', array('id' => $id))->row_array();
-      // print_r($get_where);
-      // exit();
-      // $video = $get_where['video'];
-      $files = $get_where['files'];
-      // print_r($video);
-      // exit();
-   
-        unlink(FCPATH . 'assets/upload/'.$files);
-        // unlink(FCPATH . './assets/dist/video/'.$video);
-      
-  
-      $this->db->where('id', $id);
-      $this->db->delete('tb_activity');
-      
+      if ($get_where) {
+        $files = $get_where['files'];
+        $deleted = $this->db->delete('tb_activity', array('id' => $id));
+        if ($deleted) {
+          unlink(FCPATH . './assets/files/' . $files);
+        } else {
+          log_message('error', 'Database deletion failed for activity ID: ' . $id); // Example using a logging function
+        }
+      } else {
+        // Handle potential record not found scenario (optional)
+      }
     }
 
     public function getKegiatanById($id) {

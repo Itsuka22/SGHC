@@ -50,7 +50,7 @@ class Kegiatan extends CI_Controller {
     // Check upload count for today
     $upload_count = $this->kegiatan->countUploadsToday($id_pegawai);
 
-    if ($upload_count >= 2) {
+    if ($upload_count >= 1) {
         $this->session->set_flashdata('pesan','<div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>Anda sudah mencapai batas maksimal upload hari ini!</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -61,9 +61,9 @@ class Kegiatan extends CI_Controller {
         return;
     }
 
-		$config['upload_path']		= './assets/upload/';
+		$config['upload_path']		= './assets/files/';
 		$config['allowed_types']      = '*';
-		$config['max_size']           = 6048; //max 2mb
+		$config['max_size']           = 6048; //max 6mb
 		$this->load->library('upload', $config);
 
 		// $this->load->library('upload', $config);
@@ -102,6 +102,7 @@ class Kegiatan extends CI_Controller {
 
 public function delete($id) {
 	$where = array('id' => $id);
+
 	$this->kegiatan->delete_data($where,'tb_activity');
 	$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
 			<strong>Data berhasil dihapus!</strong>
