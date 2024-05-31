@@ -37,6 +37,11 @@ class Kegiatan_model extends CI_Model {
       return $result['count'];
   }
 
+  public function getListKegiatan(){
+    $query = "SELECT * FROM `approvalkegiatan`";
+    return $this->db->query($query)->result_array();
+  }
+
 
 
 // SELECT id_pegawai, COUNT(*) AS activity_count

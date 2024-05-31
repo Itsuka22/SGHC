@@ -18,7 +18,6 @@
                         </a>
                     </div>
                     <div class="container-fluid">
-                    <h1 class="h3 mb-2 text-gray-800">Leaderboard</h1>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Leaderboard Table</h6>
@@ -52,3 +51,59 @@
                 </div>
             </div>
         </div>
+
+<style>
+    .banner {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+}
+
+.headerImg {
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.table-responsive {
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .headerImg {
+        height: 200px;
+    }
+
+    .text-center {
+        text-align: center !important;
+    }
+
+    .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .headerImg {
+        height: 150px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+</style>

@@ -2,7 +2,7 @@
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><?php echo $title ?></h1>
   </div>
-  <a class="btn btn-sm btn-success mb-3" href="<?php echo base_url('pegawai/kegiatan/tambah_kegiatan') ?>"><i class="fas fa-plus"></i> Tambah Pegawai</a>
+  <a class="btn btn-sm btn-success mb-3" href="<?php echo base_url('pegawai/kegiatan/tambah_kegiatan') ?>"><i class="fas fa-plus"></i> Tambah Kegiatan</a>
   <?php echo $this->session->flashdata('pesan') ?>
 </div>
 
@@ -47,9 +47,14 @@
 
 <script src="path/to/lightbox.js"></script>
 <script>
-  lightbox.option({
-    // Optional lightbox configuration options here
-  });
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'alwaysShowNavOnTouchDevices': true,
+      'fadeDuration': 200,
+      'imageFadeDuration': 200,
+      'showImageNumberLabel': false
+    });
 </script>
 
 <style>

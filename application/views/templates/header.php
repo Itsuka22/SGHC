@@ -6,6 +6,7 @@
     <title>Healthy Challenges SG</title>
     <!-- StyleSheets -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/landing/css/bootstrap/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/landing/css/fontawesome/css/all.min.css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/landing/css/style.css" />
 </head>
@@ -28,7 +29,11 @@
     <div class="Header" id="Home">
         <nav class="navbar fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">Healthy Challenges SG</a>
+                <div >
+                    <img src="./assets/img/logoSG.png" alt="logo" width="50px">
+                    <a class="navbar-brand" href="#">Healthy Challenges SG</a>
+                </div>
+
                 <div class="collapse_menu deactive">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -46,3 +51,5 @@
                 </div>
             </div>
         </nav>
+
+
