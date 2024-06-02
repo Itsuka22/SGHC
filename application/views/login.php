@@ -1,5 +1,5 @@
 <div class="banner">
-    <div class="layer">
+
         <div class="container">
             <div class="row Section">
                 <div class="col-md-6 offset-md-3">
@@ -38,15 +38,10 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/main.js"></script>
 
 <style>
-.banner {
-    background-color: #f8f9fa;
-    padding: 20px 0;
-}
 
 .card {
     border-radius: 10px;
@@ -78,7 +73,7 @@
     font-size: 0.875rem; /* Adjust error message size for mobile */
 }
 
-@media (max-width: 576px) {
+@media (max-width: 450px) {
     .card {
         margin: 20px; /* Add margin for better spacing on small screens */
     }

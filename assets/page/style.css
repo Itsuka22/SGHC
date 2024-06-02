@@ -1,0 +1,370 @@
+/* style.css */
+
+/* General styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(to right, #cae0d0, #c0ddee); /* bg_gradient */
+  /* bg_gradient */
+}
+
+/* Loader */
+.Loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
+}
+.LoaderWrapper .circleBall {
+  width: 20px;
+  height: 20px;
+  background: #5cb85c;
+  border-radius: 50%;
+  margin: 0 5px;
+  animation: bounce 0.6s infinite alternate;
+}
+@keyframes bounce {
+  to {
+      opacity: 0.3;
+      transform: translate3d(0, -20px, 0);
+  }
+}
+
+/* Go to top Button */
+.Gototop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #5cb85c;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.Gototop i {
+  font-size: 16px;
+}
+
+/* Header Section */
+.Header {
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  z-index: 999; /* Pastikan z-index lebih tinggi dari banner */
+  position: fixed; /* Tetap di atas saat discroll */
+  top: 0; /* Tetapkan posisi di atas */
+  left: 0; /* Pastikan menempel di kiri */
+}
+
+/* Navbar */
+.navbar {
+  transition: all 2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.navbar-scrolled {
+  background: linear-gradient(to right, #cae0d0, #e0e7a2); /* bg_gradient */
+
+}
+.navbar-brand {
+  margin: 0; /* Remove default margin */
+  color: green; /* Change text color to green */
+}
+
+.navbar-logo-title {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo-title img {
+  margin-right: 10px;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.collapse_menu {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.collapse_menu .fa-bars,
+.collapse_menu .fa-times {
+  position: absolute;
+  right: 10px; /* Adjust the right position as needed */
+  top: 50%;
+  transform: translateY(-50%);
+  display: none; /* Hide by default */
+}
+
+.nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-item {
+  margin-left: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #5cb85c;
+}
+
+/* Main Content */
+.main-content {
+  padding-top: 60px; /* Sesuaikan dengan tinggi header Anda */
+}
+
+/* Banner Section */
+.banner {
+  position: relative; /* Pastikan tidak menggunakan static untuk memungkinkan z-index */
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to right, #cae0d0, #c0ddee); /* bg_gradient */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  color: rgb(51, 129, 68);
+  z-index: 1; /* Pastikan z-index lebih rendah dari navbar */
+  margin-top: 20px; /* Sesuaikan dengan tinggi header agar tidak tertutup */
+}
+
+.headerImg {
+  /* background-image: url('<?php echo base_url()?>assets/img/bgutama.svg'); */
+  top: 0%;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 120vh; /* Sesuaikan dengan tinggi yang diinginkan */
+}
+
+.layer {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Optional: to darken the gradient for better text visibility */
+}
+
+/* .row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 20%;
+} */
+
+.col {
+  flex: 1; /* Agar kolom mengambil ruang yang tersedia secara merata */
+  padding: 20px; /* Opsional: memberikan padding pada kolom */
+}
+
+/* .container2 {
+  padding-inline: 10em;
+  position: relative;
+  top: 40%;
+  transform: translate(-50%, -50%);
+} */
+
+.box {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  margin-top: 14em;
+}
+
+.title-leader {
+  color: #ffffff; /* Ubah warna teks menjadi putih */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Tambahkan bayangan teks */
+  position: relative;
+  margin-top: 20em;
+  margin-left: 10em;
+}
+
+.discover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #5cb85c;
+  border-radius: 50%;
+  margin: 20px auto;
+  cursor: pointer;
+}
+
+/* Footer Section */
+.footer {
+  background: #f8f9fa;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.9em;
+  color: #6c757d;
+}
+.footer a {
+  color: #5cb85c;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer a:hover {
+  color: #4cae4c;
+}
+
+/* Leaderboard Section */
+.leaderboard {
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 20px 0;
+}
+.leaderboard h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.leaderboard .leaderboard-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+.leaderboard .leaderboard-item:last-child {
+  border-bottom: none;
+}
+.leaderboard .leaderboard-rank {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #5cb85c;
+}
+.leaderboard .leaderboard-name {
+  font-size: 1em;
+  font-weight: 500;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+.collapse_menu.deactive .fa-bars{
+    display: block;
+}
+.collapse_menu.active .fa-bars{
+    display: none;
+}
+.collapse_menu.deactive .fa-times{
+    display: none;
+}
+.collapse_menu.active .fa-times{
+    display: block;
+}
+.navbar .collapse_menu.deactive ul.nav{
+    position: fixed;
+    top: 60px;
+    left: -55vw;
+    width: 55vw;
+    height: 100%;
+    display: inline-block;
+    background: #519c57;
+    border-right: 5px solid darkcyan;
+    transition: all 1s;
+}
+.navbar .collapse_menu.active ul.nav{
+    left: 0;
+}
+.navbar ul.nav li a{
+    transition: all 0.5s;
+    color: #ffffff!important;
+}
+  .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+  .navbar-logo-title {
+      width: 100%;
+      justify-content: left;
+  }
+  .nav {
+      flex-direction: column;
+      width: 100%;
+      display: none;
+  }
+  .nav-item {
+      margin: 10px 0;
+  }
+  .collapse_menu.active .nav {
+      display: flex;
+  }
+}
+
+@media (max-width: 450px) {
+
+
+  .collapse_menu.deactive .fa-bars{
+    display: block;
+  }
+  .collapse_menu.active .fa-bars{
+      display: none;
+  }
+  .collapse_menu.deactive .fa-times{
+      display: none;
+  }
+  .collapse_menu.active .fa-times{
+      display: block;
+  }
+  
+  .navbar-logo-title {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .navbar-logo-title img {
+    margin-right: 3;
+    justify-content: left; /* Remove the margin on smaller screens */
+  }
+
+  .navbar-logo-title a {
+    margin-right: auto; /* Remove the margin on smaller screens */
+  }
+
+  .navbar-brand {
+    text-align: center;
+  }
+  
+
+  .collapse_menu {
+    position: absolute;
+    padding: 20px;
+    right: 10px; 
+  }
+
+  .collapse_menu .fa-bars {
+    display: block; /* Show the hamburger menu icon */
+  }
+}
