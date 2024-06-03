@@ -1,86 +1,68 @@
 <div class="banner">
-
-        <div class="container">
-            <div class="row Section">
-                <div class="col-md-6 offset-md-3">
-                    <div class="card shadow-lg mt-5">
-                        <div class="card-body">
-                            <div class="login-content text-center">
-                                <form class="user" method="POST" action="<?php echo base_url('login') ?>">
-                                    <h2 class="title mb-4"><font size="5">Login SGHC </font></h2>
-                                    <?php echo $this->session->flashdata('pesan')?>
-                                    <div class="form-group input-div one">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control" name="username" placeholder="Username">
-                                        </div>
-                                        <?php echo form_error('username', '<div class="text-small text-danger"> </div>')?>
-                                    </div>
-                                    <div class="form-group input-div pass">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                            </div>
-                                            <input type="password" class="form-control" name="password" placeholder="Password">
-                                        </div>
-                                        <?php echo form_error('password', '<div class="text-small text-danger"> </div>')?>
-                                    </div>
-                                    <input type="submit" class="btn btn-primary btn-block" value="Login">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center mt-3">
-                        <p>Healthy Challenges merupakan bentuk komitmen menjaga kesehatan pekerja, yang merupakan salah satu aset terpenting bagi perusahaan.</p>
-                    </div>
+    
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+       <div class="row border rounded-5 p-3 bg-white shadow box-area">
+       <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #ADD28C;">
+           <div class="featured-image mb-3">
+                <img src="./assets/img/login_bg.jpg" class="img-fluid" style="width: 250px;">
+           </div>
+           <p class="text-black fs-1 "><b></b>SG Healthy Challenges</p>
+           <small class="text-black text-wrap text-center">"Energi Positif untuk Kehidupan Sehat"</small>
+       </div> 
+        
+        <div class="col-md-6 right-box">
+          <form class="user" method="POST" action="<?php echo base_url('login') ?>">
+            <div class="row align-items-center">
+                <div class="header-text mb-4">
+                    <h2>Log In</h2>
+                    <p>Masuk akun SGHC dengan username password</p>
                 </div>
-            </div>
-        </div>
+                <?php echo $this->session->flashdata('pesan')?>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="username" placeholder="Username">
+                  </div>
+                  <?php echo form_error('username', '<div class="text-small text-danger"> </div>')?>
+                  <div class="input-group mb-5">
+                  <input type="password" class="form-control" name="password" placeholder="Password">
+                  </div>
+                  <?php echo form_error('password', '<div class="text-small text-danger"> </div>')?>
+                <div class="input-group mb-2">
+                  <input type="submit" class="btn btn-success btn-block" value="Login">
+                </div>
+          </div>
+       </div> 
+      </div>
+    </div>
 </div>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/main.js"></script>
 
 <style>
-
-.card {
-    border-radius: 10px;
+.box-area{
+    width: 930px;
 }
-
-.input-group-text {
-    background-color: #007bff;
-    color: #fff;
+.right-box{
+    padding: 40px 30px 40px 40px;
 }
-
-.btn-primary {
-    background-color: #007bff;
-    border: none;
+::placeholder{
+    font-size: 16px;
 }
-
-.btn-primary:hover {
-    background-color: #0056b3;
+.rounded-4{
+    border-radius: 20px;
 }
-
-.title {
-    font-size: 1.5rem; /* Adjust font size for mobile */
+.rounded-5{
+    border-radius: 30px;
 }
-
-.form-group {
-    margin-bottom: 1.5rem; /* Increase space between form groups for better readability */
-}
-
-.text-small {
-    font-size: 0.875rem; /* Adjust error message size for mobile */
-}
-
-@media (max-width: 450px) {
-    .card {
-        margin: 20px; /* Add margin for better spacing on small screens */
-    }
-
-    .title {
-        font-size: 1.25rem; /* Further adjust font size for very small screens */
-    }
+@media only screen and (max-width: 768px){
+     .box-area{
+        margin: 0 10px;
+     }
+     .left-box{
+        height: 100px;
+        overflow: hidden;
+     }
+     .right-box{
+        padding: 20px;
+     }
 }
 </style>
 

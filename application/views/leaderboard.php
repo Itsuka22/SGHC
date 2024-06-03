@@ -51,6 +51,36 @@
                         <td> 90 </td>
                         <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
                     </tr>
+                    <tr>
+                      <td> 2 </td>
+                        <td> Handoko</td>
+                        <td> 50 </td>
+                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
+                    </tr>
+                    <tr>
+                      <td> 3 </td>
+                        <td> Yudi </td>
+                        <td> 25 </td>
+                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
+                    </tr>
+                    <tr>
+                      <td> 4 </td>
+                        <td> Dion</td>
+                        <td> 22 </td>
+                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
+                    </tr>
+                    <tr>
+                      <td> 5 </td>
+                        <td> Lee Kang in</td>
+                        <td> 15 </td>
+                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
+                    </tr>
+                    <tr>
+                      <td> 6 </td>
+                        <td> Herbudi</td>
+                        <td> 10 </td>
+                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
+                    </tr>
                 </tbody>
             </table>
                 <div id="detail1" class="detail-popup">
