@@ -50,21 +50,7 @@
 				<?php echo form_error('jenis_kelamin', '<div class="text-small text-danger"> </div>')?>
 			</div>
 
-			<div class="form-group">
-				<label>Jabatan</label>
-				<select name="jabatan" class="form-control">
-					<option value="<?php echo $p->jabatan?>"><?php echo $p->jabatan?></option>
-					<?php foreach($jabatan as $j) :?>
-					<option value="<?php echo $j->nama_jabatan ?>"><?php echo $j->nama_jabatan ?></option>
-					<?php endforeach; ?>
-				</select>
-			</div>
 
-			<div class="form-group">
-				<label>Tanggal Masuk</label>
-				<input type="date" name="tanggal_masuk" class="form-control" value="<?php echo $p->tanggal_masuk?>">
-				<?php echo form_error('tanggal_masuk', '<div class="text-small text-danger"> </div>')?>
-			</div>
 
 			<div class="form-group">
 				<label>Status</label>

@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-date_default_timezone_set('Asia/Jakarta');
-setlocale(LC_ALL, 'IND');
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -24,7 +23,7 @@ setlocale(LC_ALL, 'IND');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/SGHC/';
+$config['base_url'] = 'http://10.7.124.42/SGHC/';
 
 /*
 |--------------------------------------------------------------------------

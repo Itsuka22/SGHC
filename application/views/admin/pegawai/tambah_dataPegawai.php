@@ -48,22 +48,6 @@
 			</div>
 
 			<div class="form-group">
-				<label>Jabatan</label>
-				<select name="jabatan" class="form-control">
-					<option value="">--Pilih Jabatan--</option>
-					<?php foreach($jabatan as $j) :?>
-					<option value="<?php echo $j->nama_jabatan ?>"><?php echo $j->nama_jabatan ?></option>
-					<?php endforeach; ?>
-				</select>
-			</div>
-
-			<div class="form-group">
-				<label>Tanggal Masuk</label>
-				<input type="date" name="tanggal_masuk" class="form-control">
-				<?php echo form_error('tanggal_masuk', '<div class="text-small text-danger"> </div>')?>
-			</div>
-
-			<div class="form-group">
 				<label>Status</label>
 				<select name="status" class="form-control">
 					<option value="">--Pilih Status--</option>
@@ -88,10 +72,20 @@
 			</div>
 
 
-			<button type="submit" class="btn btn-success" >Simpan</button>
+			<button type="submit" name="btSimpan" id="btSimpan" class="btn btn-success" >Simpan</button>
 			<button type="reset" class="btn btn-danger" >Reset</button>
 			<a href="<?php echo base_url('admin/data_pegawai')?>" class="btn btn-warning">Kembali</a>
 
 		</form>
 	</div>
 </div>
+
+<!-- <script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+	$('#btSimpan').click(function() {
+        alert('This is a simple alert!');
+    });
+	});
+</script> -->

@@ -10,78 +10,57 @@
   <main class="table" id="customers_table">
         <section class="table__header">
             <h5>Leaderboard</h5>
-            <!-- <div class="input-group">
-                <input type="search" placeholder="Search Data...">
-                <img src="images/search.png" alt="">
-            </div> -->
-            <!-- <div class="export__file">
-                <label for="export-file" class="export__file-btn" title="Export File"></label>
-                <input type="checkbox" id="export-file">
-                <div class="export__file-options">
-                    <label>Export As &nbsp; &#10140;</label>
-                    <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt=""></label>
-                    <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
-                    <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
-                    <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
-                </div> -->
             </div>
         </section>
         <section class="table__body">
-            <table>
-                <thead>
-                    <tr>
+        <table>
+              <thead>
+                  <tr>
                       <th width="20px">No</th>
                       <th>Name</th>
                       <th width="100px">Point<span class="icon-arrow">&UpArrow;</span></th>
+                      <th width="150px">Star Rating</th>
                       <th width="100px">Detail</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  <!-- <?php $no=1; foreach ($leaderboard as $row): ?>
-                    <tr>
-                        <td><?php echo $no++; ?></td>
-                        <td><?php echo $row['username']; ?></td>
-                        <td><?php echo $row['activity_count']; ?></td>
-                        <td><?php echo $row->point; ?></td>
-                    </tr>
-                    <?php endforeach; ?> -->
-                    <tr>
-                      <td> 1 </td>
-                        <td> Zinzu Chan Lee</td>
-                        <td> 90 </td>
-                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
-                    </tr>
-                    <tr>
-                      <td> 2 </td>
-                        <td> Handoko</td>
-                        <td> 50 </td>
-                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
-                    </tr>
-                    <tr>
-                      <td> 3 </td>
-                        <td> Yudi </td>
-                        <td> 25 </td>
-                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
-                    </tr>
-                    <tr>
-                      <td> 4 </td>
-                        <td> Dion</td>
-                        <td> 22 </td>
-                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
-                    </tr>
-                    <tr>
-                      <td> 5 </td>
-                        <td> Lee Kang in</td>
-                        <td> 15 </td>
-                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
-                    </tr>
-                    <tr>
-                      <td> 6 </td>
-                        <td> Herbudi</td>
-                        <td> 10 </td>
-                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
-                    </tr>
-                </tbody>
+                  </tr>
+              </thead>
+              <tbody>
+                  <?php 
+                  $no = 1; 
+                  foreach ($leaderboard as $row): 
+                      $points = $row['activity_count'];
+                      $stars = '';
+
+                      if ($points >= 100) {
+                          $stars = str_repeat('<i class="fas fa-star" style="color: gold;"></i>', 5);
+                      } elseif ($points >= 90) {
+                          $stars = str_repeat('<i class="fas fa-star" style="color: gold;"></i>', 4) . '<i class="fas fa-star-half-alt" style="color: gold;"></i>' . str_repeat('<i class="far fa-star"></i>', 0);
+                      } elseif ($points >= 70) {
+                          $stars = str_repeat('<i class="fas fa-star" style="color: gold;"></i>', 4) . str_repeat('<i class="far fa-star"></i>', 1);
+                      } elseif ($points >= 60) {
+                          $stars = str_repeat('<i class="fas fa-star" style="color: gold;"></i>', 3) . '<i class="fas fa-star-half-alt" style="color: gold;"></i>' . str_repeat('<i class="far fa-star"></i>', 1);
+                      } elseif ($points >= 50) {
+                          $stars = str_repeat('<i class="fas fa-star" style="color: gold;"></i>', 3) . str_repeat('<i class="far fa-star"></i>', 2);
+                      } elseif ($points >= 40) {
+                          $stars = str_repeat('<i class="fas fa-star" style="color: gold;"></i>', 2) . '<i class="fas fa-star-half-alt" style="color: gold;"></i>' . str_repeat('<i class="far fa-star"></i>', 2);
+                      } elseif ($points >= 30) {
+                          $stars = str_repeat('<i class="fas fa-star" style="color: gold;"></i>', 2) . str_repeat('<i class="far fa-star"></i>', 3);
+                      } elseif ($points >= 20) {
+                          $stars = '<i class="fas fa-star" style="color: gold;"></i>' . '<i class="fas fa-star-half-alt" style="color: gold;"></i>' . str_repeat('<i class="far fa-star"></i>', 3);
+                      } elseif ($points >= 10) {
+                          $stars = '<i class="fas fa-star" style="color: gold;"></i>' . str_repeat('<i class="far fa-star"></i>', 4);
+                      } else {
+                          $stars = '<i class="fas fa-star-half-alt" style="color: gold;"></i>' . str_repeat('<i class="far fa-star" style="color: gold;"></i>', 4);
+                      }
+                  ?>
+                  <tr>
+                      <td><?php echo $no++; ?></td>
+                      <td><?php echo $row['nama_pegawai']; ?></td>
+                      <td><?php echo $points; ?></td>
+                      <td><?php echo $stars; ?></td>
+                      <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
+                  </tr>
+                  <?php endforeach; ?>
+              </tbody>
             </table>
                 <div id="detail1" class="detail-popup">
               <div class="detail-content">
@@ -94,17 +73,7 @@
 
 
 <style>
-  /*
-Responsive HTML Table With Pure CSS - Web Design/UI Design
-
-Code written by:
-👨🏻‍⚕️ Coding Design (Jeet Saru)
-
-> You can do whatever you want with the code. However if you love my content, you can **SUBSCRIBED** my YouTube Channel.
-
-🌎link: www.youtube.com/codingdesign 
-*/
-
+ 
 
 @media print {
   .table, .table__body {

@@ -8,7 +8,7 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-        <div class="sidebar-brand-text mx-3">Penggajian Karyawan</div>
+        <div class="sidebar-brand-text mx-3">SG healthy challenges</div>
       </a>
 
       <!-- Divider -->
@@ -30,7 +30,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="<?php echo base_url('admin/data_pegawai') ?>">Data Pegawai</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/data_jabatan') ?>">Data Jabatan</a>
+            <a class="collapse-item" href="<?php echo base_url('admin/data_jabatan') ?>">Jenis Kegiatan</a>
           </div>
         </div>
       </li>
@@ -43,9 +43,9 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<?php echo base_url('admin/admin_kegiatan') ?>">List Kegiatan</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/potongan_gaji') ?>">Setting Potongan Gaji</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/data_penggajian') ?>">Data Gaji</a>
+          <a class="collapse-item" href="<?php echo base_url('admin/activity') ?>">Entry Activity</a>
+            <a class="collapse-item" href="<?php echo base_url('admin/potongan_gaji') ?>">Approval Activity</a>
+            <!-- <a class="collapse-item" href="<?php echo base_url('admin/data_penggajian') ?>">Data Gaji</a> --> 
           </div>
         </div>
       </li>
@@ -58,9 +58,7 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<?php echo base_url('admin/laporan_gaji') ?>">Laporan Gaji</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/laporan_absensi') ?>">Laporan Absensi</a>
-            <a class="collapse-item" href="<?php echo base_url('admin/slip_gaji') ?>">Slip Gaji</a>
+            <a class="collapse-item" href="<?php echo base_url('admin/laporan_gaji') ?>">Laporan Activity</a>
           </div>
         </div>
       </li>
@@ -93,34 +91,29 @@
       <!-- Main Content -->
       <div id="content">
 
-      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-              <i class="fa fa-bars"></i>
+            <i class="fa fa-bars"></i>
           </button>
 
-          <!-- Logo Image -->
-
-
-          <!-- <h4 class="font-weight-bold">Monitoring SGHC</h4> -->
+          <h4 class="font-weight-bold">PT. Semen Gresik</h4>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-          <div class="navbar-brand" >
-              <img src="<?php echo base_url('assets/img/logoSG.png'); ?>" alt="LogoSG" style="width: 50px; position:pull-right;">
-          </div>
 
-              <div class="topbar-divider d-none d-sm-block"></div>
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Selamat Datang <?php echo $this->session->userdata('nama_pegawai')?></span>
+                <img class="img-profile rounded-circle" src="<?php echo base_url('photo/').$this->session->userdata('photo') ?>">
+              </a>
               
-
-              <!-- Nav Item - User Information -->
-              <li class="nav-item dropdown no-arrow">
-                  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <span class="mr-2 d-none d-lg-inline text-gray-600 small">Selamat Datang <?php echo $this->session->userdata('nama_pegawai'); ?></span>
-                      <img class="img-profile rounded-circle" src="<?php echo base_url('photo/') . $this->session->userdata('photo'); ?>">
-                  </a>
-              </li>
+            </li>
 
           </ul>
 

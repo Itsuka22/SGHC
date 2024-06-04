@@ -15,7 +15,7 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    <button id="btnbatal"name="btnbatal" type="button" class="btn btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
                 </div>
             </div>
         </div>
@@ -79,7 +79,6 @@ $(document).ready(function(){
 
 <script>
     $(document).ready(function(){
-
         $('.tambah').click(function(){
         var aksi = 'Tambah Potongan Gaji';
         $.ajax({

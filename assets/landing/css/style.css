@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 html,body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Montserrat" , Verdana, Geneva, Tahoma, sans-serif;
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
@@ -16,7 +16,7 @@ html,body{
 |##     Common Styles
 |##
  */
-.Loader{
+ .Loader{
     position:fixed;
     z-index:999999;
     top: 0;
@@ -50,10 +50,10 @@ html,body{
 }
  .collapse_menu i.fa-bars,
  .collapse_menu i.fa-times{
-    font-size: 27px;
-    cursor: pointer;
-    color: #00BFD8;
-    display:none;
+     font-size: 27px;
+     cursor: pointer;
+     color: #00BFD8;
+     display:none;
  }
 .Gototop{
     visibility:hidden;
@@ -76,7 +76,7 @@ html,body{
     background: #30A1F1;
     animation: none;
 }
-.section{
+.Section{
     width: 100%;
     height: 100%;
     padding: 50px;
@@ -185,11 +185,8 @@ html,body{
     font-family: "Bahnschrift" , Verdana, Geneva, Tahoma, sans-serif;    
     font-weight: bold;
     font-size: 30px;
-    color: #0bbe04;
+    color: #00BFD8;
 }
-/* .navbar .navbar-title{
-    font-family:
-} */
 .navbar{
     transition: all 0.5s;
     padding: 20px;
@@ -308,7 +305,8 @@ html,body{
 .Service .content .row .col-md-6:nth-child(8)  .card .CardImage{
     background-position: -420px 185px;
 }
-
+.Service .content .row  .card .CardImage{
+}
 .Service .content .row .col-md-6 {
     padding: 3px;
 }
@@ -501,12 +499,6 @@ html,body{
     .navbar{
         padding: 0!important;
         height: 60px;
-    }
-    .navbar .navbar-brand{
-        font-family: "Bahnschrift" , Verdana, Geneva, Tahoma, sans-serif;    
-        font-weight: bold;
-        font-size: 15em;
-        color: #ffffff;
     }
     .content{
         padding: 0!important;

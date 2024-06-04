@@ -11,7 +11,7 @@
 </head>
 <body>
 	<center>
-		<h1>PT. Multimedia Adiautama Asia</h1>
+		<h1>PT. Semen Gresik</h1>
 		<h2>Daftar Gaji Pegawai</h2>
 		<hr style="width: 50%; border-width: 5px; color: black">
 	</center>
