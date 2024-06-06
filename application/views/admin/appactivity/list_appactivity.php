@@ -12,7 +12,7 @@
 $(document).ready(function() {
     $.ajax({
         type: 'POST',
-        url: "<?php echo base_url(); ?>pegawai/activityuser/TampilActivity",
+        url: "<?php echo base_url(); ?>admin/appactivity/TampilAppActivity",
         cache: false,
         success: function(data) {
             $("#tampil").html(data);

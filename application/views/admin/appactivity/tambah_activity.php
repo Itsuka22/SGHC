@@ -1,5 +1,19 @@
 
 <form method="post" id="form" name="form" enctype="multipart/form-data">
+    
+    <div class="form-group">
+        <label>Karyawan</label>
+        <select id="karyawan" name="karyawan" class="form-control">
+            <option value="">--Pilih Karyawan--</option>
+            <?php foreach($listKaryawan as $result){
+            ?>
+                <option value="<?php echo $result['id_pegawai'];?>"><?php echo $result['nik']." - ";?><?php echo $result['nama_pegawai'];?></option>
+            <?php
+            }?>
+        </select>
+        <?php echo form_error('jns_kegiatan', '<div class="text-small text-danger"> </div>')?>
+    </div>
+
     <div class="form-group">
         <label>Jenis Kegiatan</label>
         <select id="jns_kegiatan" name="jns_kegiatan" class="form-control">
@@ -14,7 +28,7 @@
     </div>
 
     <div class="form-group">
-        <label>Durasi /Menit</label>
+        <label>Durasi</label>
         <input type="number" class="form-control" id="timeInput" name="timeInput">
         <?php echo form_error('timeInput', '<div class="text-small text-danger"> </div>')?>
     </div>
@@ -41,25 +55,20 @@
                 formData.append('file', file);
                 formData.append('jns_kegiatan',$('#jns_kegiatan').val());
                 formData.append('timeInput',$('#timeInput').val());
+                formData.append('karyawan',$('#karyawan').val());
 
                 $.ajax({
-                    url: "<?php echo base_url(); ?>pegawai/activityuser/simpanActivity", // Ganti dengan URL script PHP untuk menangani upload
+                    url: "<?php echo base_url(); ?>admin/activity/simpanActivity", // Ganti dengan URL script PHP untuk menangani upload
                     type: 'POST',
                     data: formData,
                     contentType: false,
                     processData: false,
                     success: function(response) {
-                        alert(response.message);
+                        alert("Data berhasil di simpan");
                         location.reload();
                     },
                     error: function(xhr, status, error) {
-                        var response = jqXHR.responseJSON;
-                        if (response && response.status === "Error") {
-                            $('#errorMessage').text(response.message);
-                        } else {
-                            $('#errorMessage').text('Terjadi kesalahan yang tidak diketahui.');
-                        }
-                        console.error('Error:', response);
+                        alert("Data gagal di simpan");
                     }
                 });
             });

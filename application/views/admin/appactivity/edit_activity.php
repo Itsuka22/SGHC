@@ -1,7 +1,20 @@
 <?php foreach($hasil as $result){
 ?>
 <form method="post" id="form" name="form" enctype="multipart/form-data">
-    <input type="hidden" id="idActivity" name="idActivity" value="<?php echo $result->id_activity;?>">
+    <div class="form-group">
+        <label>Karyawan</label>
+        <input type="hidden" id="idActivity" name="idActivity" value="<?php echo $result->id_activity;?>">
+        <select id="karyawan" name="karyawan" class="form-control">
+            <option value="<?php echo $result->id_pegawai;?>"><?php echo $result->nik." - ".$result->nama_pegawai;?></option>
+            <?php foreach($listKaryawan as $resultlist){
+            ?>
+                <option value="<?php echo $resultlist['id_pegawai'];?>"><?php echo $resultlist['nik']." - ";?><?php echo $resultlist['nama_pegawai'];?></option>
+            <?php
+            }?>
+        </select>
+        <?php echo form_error('jns_kegiatan', '<div class="text-small text-danger"> </div>')?>
+    </div>
+
     <div class="form-group">
         <label>Jenis Kegiatan</label>
         <select id="jns_kegiatan" name="jns_kegiatan" class="form-control">
@@ -39,6 +52,7 @@
                     var formData = new FormData();
                     formData.append('jns_kegiatan',$('#jns_kegiatan').val());
                     formData.append('timeInput',$('#timeInput').val());
+                    formData.append('karyawan',$('#karyawan').val());
                     formData.append('idActivity',$('#idActivity').val());
                 }else{
                     var file = files[0];
@@ -46,12 +60,13 @@
                     formData.append('file', file);
                     formData.append('jns_kegiatan',$('#jns_kegiatan').val());
                     formData.append('timeInput',$('#timeInput').val());
+                    formData.append('karyawan',$('#karyawan').val());
                     formData.append('idActivity',$('#idActivity').val());
                 }
                 // alert("asdf");
                 console.log(formData);
                 $.ajax({
-                    url: "<?php echo base_url(); ?>pegawai/activityuser/do_edit_activity", // Ganti dengan URL script PHP untuk menangani upload
+                    url: "<?php echo base_url(); ?>admin/activity/do_edit_activity", // Ganti dengan URL script PHP untuk menangani upload
                     type: 'POST',
                     data: formData,
                     contentType: false,

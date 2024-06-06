@@ -1,4 +1,4 @@
-<button type="button" class="tambah btn-sm btn-success mb-3" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus"></i> Tambah Activity</button>
+
     <div class="modal fade" id="myModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -36,17 +36,16 @@
                         <th>No</th>
                         <th>Karyawan</th>
                         <th>Tanggal</th>
+                        <th>Durasi<th>
                         <th>Kegiatan</th>
                         <th>File</th>
                         <th>Status</th>
-                        <th colspan='2'>Action</th>
+                        <th colspan='2'>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                         $no=1;
-                        $datenow=date('Y-m-d');
-                        // print_r($data);
                         foreach ($data as $item)
                         {
                     ?>
@@ -54,30 +53,14 @@
                         <td><?php echo $no;?></td>
                         <td><?php echo $item->nama_pegawai;?></td>
                         <td><?php echo $item->tanggalAct;?></td>
+                        <td><?php echo $item->durasiAct;?></td>
                         <td><?php echo $item->nm_kegiatan;?></td>
-                        <td><img src="<?php echo base_url().'photo/'.$item->photoAct;?>" width="500px"/></td>
+                        <td><img src="<?php echo base_url().'photo/'.$item->photoAct;?>" width="400px"/></td>
                         <td><?php if($item->statusAct==0){echo "<b>Data On Review</b>";}else{echo "<b>Data Approved</b>";}?></td>
-                        <?php 
-                        if(strtotime($datenow) > strtotime($item->tanggalAct)){
-                        ?>
                         <td>
-                            <b>The data cannot be changed<b>
+                        <button type="button" activity="<?php echo $item->id_activity; ?>" class="app bi bi-check-lg"><i class="fas fa-edit"></i></button>
+                        <button type="button" activity="<?php echo $item->id_activity; ?>" class="reject bi bi-trash"><i class="fas fa-trash"></i></button>
                         </td>
-                            <?php
-
-                        }else{
-                        ?>
-                        <td>
-                            <div class="action-buttons">
-                                <button type="button" activity="<?php echo $item->id_activity; ?>" class="edit btn btn-sm btn-info"><i class="fas fa-edit"></i></button>
-                                <button type="button" activity="<?php echo $item->id_activity; ?>" class="hapus btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                            </div>
-                        </td>
-                    <?php
-                        }
-                        ?>
-                        
-
                     </tr>
                     <?php
                         $no++;
@@ -102,26 +85,25 @@ $(document).ready(function(){
 </script>
 <script>
     $(document).ready(function(){
-        $('.tambah').click(function(){
-        var aksi = 'Tambah Potongan Gaji';
-        $.ajax({
-            url: '<?php echo base_url(); ?>pegawai/activityuser/tambah_activity',
-            method: 'post',
-            data: {aksi:aksi},
-            success:function(data){
-                $('#myModal').modal("show");
-                $('#tampil_modal').html(data);
-                document.getElementById("judul").innerHTML='';
 
-            }
-        });
-        });
-
-        $('.edit').click(function(){
-
+        $('.app').click(function(){
             var activity = $(this).attr("activity");
             $.ajax({
-                url: '<?php echo base_url(); ?>pegawai/activityuser/edit_activity',
+                url: '<?php echo base_url(); ?>admin/appactivity/app_activity',
+                method: 'post',
+                data: {id_activity:activity},
+                success:function(data){
+                    location.reload();
+                    // $('#myModal').modal("show");
+                    // $('#tampil_modal').html(data);
+                    // document.getElementById("judul").innerHTML='Edit Activity';  
+                }
+            });
+        });
+        $('.reject').click(function(){
+            var activity = $(this).attr("activity");
+            $.ajax({
+                url: '<?php echo base_url(); ?>admin/appactivity/reject_activity',
                 method: 'post',
                 data: {id_activity:activity},
                 success:function(data){
@@ -131,33 +113,5 @@ $(document).ready(function(){
                 }
             });
         });
-
-        $('.hapus').click(function(){
-
-            var activity = $(this).attr("activity");
-            $.ajax({
-                url: '<?php echo base_url(); ?>pegawai/activityuser/hapus_activity',
-                method: 'post',
-                data: {id_activity:activity},
-                success:function(data){
-                    location.reload();
-                    // $('#sukses').show();
-                    // $('#tampil_modal').html(data);
-                    // document.getElementById("judul").innerHTML='Hapus Potongan';
-                }
-            });
-            });
     });
 </script>
-
-<style>
-    .action-buttons {
-        display: flex;
-        gap: 5px;
-        justify-content: center;
-        align-items: center;
-    }
-    .action-buttons .btn {
-        margin: 0 2px;
-    }
-</style>

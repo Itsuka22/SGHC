@@ -23,7 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://10.7.124.42/SGHC/';
+$config['base_url'] = 'http://localhost/SGHC/';
+// $config['base_url'] = "https://".$_SERVER['HTTP_HOST'];
+// $config['base_url'] .= preg_replace('@/+$@','',dirname($_SERVER['SCRIPT_NAME'])).'/';
 
 /*
 |--------------------------------------------------------------------------

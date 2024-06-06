@@ -23,17 +23,17 @@
 
 
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('pegawai/activity_user') ?>">
+        <a class="nav-link" href="<?php echo base_url('pegawai/activityuser') ?>">
           <i class="fas fa-fw fa-money-check-alt"></i>
           <span>Entry Activity</span></a>
       </li>
 
       <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('pegawai/ganti_password') ?>">
-          <i class="fas fa-fw fa-lock"></i>
-          <span>Ubah Password</span></a>
-      </li>
+      <!--<li class="nav-item">-->
+      <!--  <a class="nav-link" href="<?php echo base_url('pegawai/gantipassword') ?>">-->
+      <!--    <i class="fas fa-fw fa-lock"></i>-->
+      <!--    <span>Ubah Password</span></a>-->
+      <!--</li>-->
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">

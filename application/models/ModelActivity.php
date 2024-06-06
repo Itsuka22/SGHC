@@ -17,5 +17,6 @@ class ModelActivity extends CI_model{
         $where";
         return $this->db->query($query);
     }
+
 }
 ?>

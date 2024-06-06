@@ -41,7 +41,7 @@
                     <i class="fa fa-times" aria-hidden="true"></i>
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url("landing_page") ?>">Home</a>
+                            <a class="nav-link" href="<?= base_url("landingpage") ?>">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= base_url("leaderboard") ?>">Leaderboard</a>

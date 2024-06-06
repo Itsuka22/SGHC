@@ -19,54 +19,48 @@
                       <th width="20px">No</th>
                       <th>Name</th>
                       <th width="100px">Point<span class="icon-arrow">&UpArrow;</span></th>
-                      <th width="150px">Star Rating</th>
                       <th width="100px">Detail</th>
                   </tr>
               </thead>
               <tbody>
                   <?php 
                   $no = 1; 
-                  foreach ($leaderboard as $row): 
-                      $points = $row['activity_count'];
-                      $stars = '';
-
-                      if ($points >= 100) {
-                          $stars = str_repeat('<i class="fas fa-star" style="color: gold;"></i>', 5);
-                      } elseif ($points >= 90) {
-                          $stars = str_repeat('<i class="fas fa-star" style="color: gold;"></i>', 4) . '<i class="fas fa-star-half-alt" style="color: gold;"></i>' . str_repeat('<i class="far fa-star"></i>', 0);
-                      } elseif ($points >= 70) {
-                          $stars = str_repeat('<i class="fas fa-star" style="color: gold;"></i>', 4) . str_repeat('<i class="far fa-star"></i>', 1);
-                      } elseif ($points >= 60) {
-                          $stars = str_repeat('<i class="fas fa-star" style="color: gold;"></i>', 3) . '<i class="fas fa-star-half-alt" style="color: gold;"></i>' . str_repeat('<i class="far fa-star"></i>', 1);
-                      } elseif ($points >= 50) {
-                          $stars = str_repeat('<i class="fas fa-star" style="color: gold;"></i>', 3) . str_repeat('<i class="far fa-star"></i>', 2);
-                      } elseif ($points >= 40) {
-                          $stars = str_repeat('<i class="fas fa-star" style="color: gold;"></i>', 2) . '<i class="fas fa-star-half-alt" style="color: gold;"></i>' . str_repeat('<i class="far fa-star"></i>', 2);
-                      } elseif ($points >= 30) {
-                          $stars = str_repeat('<i class="fas fa-star" style="color: gold;"></i>', 2) . str_repeat('<i class="far fa-star"></i>', 3);
-                      } elseif ($points >= 20) {
-                          $stars = '<i class="fas fa-star" style="color: gold;"></i>' . '<i class="fas fa-star-half-alt" style="color: gold;"></i>' . str_repeat('<i class="far fa-star"></i>', 3);
-                      } elseif ($points >= 10) {
-                          $stars = '<i class="fas fa-star" style="color: gold;"></i>' . str_repeat('<i class="far fa-star"></i>', 4);
-                      } else {
-                          $stars = '<i class="fas fa-star-half-alt" style="color: gold;"></i>' . str_repeat('<i class="far fa-star" style="color: gold;"></i>', 4);
-                      }
+                  foreach ($dataHeader as $row): 
+                      $points = $row['point'];
+                      
                   ?>
                   <tr>
                       <td><?php echo $no++; ?></td>
                       <td><?php echo $row['nama_pegawai']; ?></td>
                       <td><?php echo $points; ?></td>
-                      <td><?php echo $stars; ?></td>
-                      <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
+                      <td>
+                      <button type="button" onclick="showDetail('<?php echo $row['id_pegawai']; ?>')" data-id="<?php echo $row['id_pegawai']; ?>" class="detail-button">Detail</button>  
+                      <!-- <button class="detail-button" onclick="showDetail('detail1')">Detail</button></td> -->
                   </tr>
                   <?php endforeach; ?>
               </tbody>
             </table>
-                <div id="detail1" class="detail-popup">
-              <div class="detail-content">
-                  <span class="close" onclick="closeDetail('detail1')">&times;</span>
-                  <p>Additional details about Zinzu Chan Lee...</p>
-              </div>
+              <div id="detail1" name="detail1" class="detail-popup">
+                <div class="detail-content">
+                    <span class="close" onclick="closeDetail('detail1')">&times;</span>
+                    <p>Rincian Kegiatan</p>
+                    <section class="table__body">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>No</th>
+                            <th>Nama Kegiatan</th>
+                            <th>Tanggal Aktivitas</th>
+                            <th>Durasi (Menit)</th>
+                            <th>Point</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tbody">
+                          
+                        </tbody>
+                      </table>
+                    </section>
+                </div>
           </div>
         </section>
     </main>
@@ -451,10 +445,32 @@ thead th.active,tbody td.active {
 
 <script>
   function showDetail(id) {
-    document.getElementById(id).style.display = "block";
+    $.ajax({
+        url: '<?php echo base_url(); ?>leaderboard/detailActivity',
+        method: 'post',
+        data: {idPegawai:id},
+        success:function(response){
+          // console.log(response);
+          var no=1;
+          $.each(response, function(index, activity) {
+            var row = '<tr>';
+            row += '<th>' + no + '</th>';
+            row += '<th>' + activity.nm_kegiatan + '</th>';
+            row += '<th>' + activity.tanggalAct + '</th>';
+            row += '<th>' + activity.durasiAct + '</th>';
+            row += '<th>' + activity.Point + '</th>';
+            row += '</tr>';
+            $("#tbody").append(row);
+            no++;
+          });
+          // $("#tbody").append("<tr><th>1</th><th>Mulaia</th><th>09-05-2024</th><th>20</th></tr>");
+          $("#detail1").show();
+        }
+    });
 }
 
 function closeDetail(id) {
+  $("#tbody").empty();
     document.getElementById(id).style.display = "none";
 }
 </script>
