@@ -17,8 +17,6 @@
               <th class="text-center">NIK</th>
               <th class="text-center">Nama Pegawai</th>
               <th class="text-center">Jenis Kelamin</th>
-              <th class="text-center">Jabatan</th>
-              <th class="text-center">Tanggal Masuk</th>
               <th class="text-center">Status</th>
               <th class="text-center">Hak Akses</th>
               <th class="text-center">Photo</th>
@@ -32,8 +30,6 @@
               <td class="text-center"><?php echo $p->nik ?></td>
               <td class="text-center"><?php echo $p->nama_pegawai ?></td>
               <td class="text-center"><?php echo $p->jenis_kelamin ?></td>
-              <td class="text-center"><?php echo $p->jabatan ?></td>
-              <td class="text-center"><?php echo $p->tanggal_masuk ?></td>
               <td class="text-center"><?php echo $p->status ?></td>
               <?php if($p->hak_akses=='1') { ?>
                 <td>Admin</td>

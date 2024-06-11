@@ -10,101 +10,64 @@
   <main class="table" id="customers_table">
         <section class="table__header">
             <h5>Leaderboard</h5>
-            <!-- <div class="input-group">
-                <input type="search" placeholder="Search Data...">
-                <img src="images/search.png" alt="">
-            </div> -->
-            <!-- <div class="export__file">
-                <label for="export-file" class="export__file-btn" title="Export File"></label>
-                <input type="checkbox" id="export-file">
-                <div class="export__file-options">
-                    <label>Export As &nbsp; &#10140;</label>
-                    <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt=""></label>
-                    <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
-                    <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
-                    <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
-                </div> -->
             </div>
         </section>
         <section class="table__body">
-            <table>
-                <thead>
-                    <tr>
+        <table>
+              <thead>
+                  <tr>
                       <th width="20px">No</th>
                       <th>Name</th>
                       <th width="100px">Point<span class="icon-arrow">&UpArrow;</span></th>
                       <th width="100px">Detail</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  <!-- <?php $no=1; foreach ($leaderboard as $row): ?>
-                    <tr>
-                        <td><?php echo $no++; ?></td>
-                        <td><?php echo $row['username']; ?></td>
-                        <td><?php echo $row['activity_count']; ?></td>
-                        <td><?php echo $row->point; ?></td>
-                    </tr>
-                    <?php endforeach; ?> -->
-                    <tr>
-                      <td> 1 </td>
-                        <td> Zinzu Chan Lee</td>
-                        <td> 90 </td>
-                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
-                    </tr>
-                    <tr>
-                      <td> 2 </td>
-                        <td> Handoko</td>
-                        <td> 50 </td>
-                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
-                    </tr>
-                    <tr>
-                      <td> 3 </td>
-                        <td> Yudi </td>
-                        <td> 25 </td>
-                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
-                    </tr>
-                    <tr>
-                      <td> 4 </td>
-                        <td> Dion</td>
-                        <td> 22 </td>
-                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
-                    </tr>
-                    <tr>
-                      <td> 5 </td>
-                        <td> Lee Kang in</td>
-                        <td> 15 </td>
-                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
-                    </tr>
-                    <tr>
-                      <td> 6 </td>
-                        <td> Herbudi</td>
-                        <td> 10 </td>
-                        <td><button class="detail-button" onclick="showDetail('detail1')">Detail</button></td>
-                    </tr>
-                </tbody>
+                  </tr>
+              </thead>
+              <tbody>
+                  <?php 
+                  $no = 1; 
+                  foreach ($dataHeader as $row): 
+                      $points = $row['point'];
+                      
+                  ?>
+                  <tr>
+                      <td><?php echo $no++; ?></td>
+                      <td><?php echo $row['nama_pegawai']; ?></td>
+                      <td><?php echo $points; ?></td>
+                      <td>
+                      <button type="button" onclick="showDetail('<?php echo $row['id_pegawai']; ?>')" data-id="<?php echo $row['id_pegawai']; ?>" class="detail-button">Detail</button>  
+                      <!-- <button class="detail-button" onclick="showDetail('detail1')">Detail</button></td> -->
+                  </tr>
+                  <?php endforeach; ?>
+              </tbody>
             </table>
-                <div id="detail1" class="detail-popup">
-              <div class="detail-content">
-                  <span class="close" onclick="closeDetail('detail1')">&times;</span>
-                  <p>Additional details about Zinzu Chan Lee...</p>
-              </div>
+              <div id="detail1" name="detail1" class="detail-popup">
+                <div class="detail-content">
+                    <span class="close" onclick="closeDetail('detail1')">&times;</span>
+                    <p>Rincian Kegiatan</p>
+                    <section class="table__body">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>No</th>
+                            <th>Nama Kegiatan</th>
+                            <th>Tanggal Aktivitas</th>
+                            <th>Durasi (Menit)</th>
+                            <th>Point</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tbody">
+                          
+                        </tbody>
+                      </table>
+                    </section>
+                </div>
           </div>
         </section>
     </main>
 
 
 <style>
-  /*
-Responsive HTML Table With Pure CSS - Web Design/UI Design
-
-Code written by:
-👨🏻‍⚕️ Coding Design (Jeet Saru)
-
-> You can do whatever you want with the code. However if you love my content, you can **SUBSCRIBED** my YouTube Channel.
-
-🌎link: www.youtube.com/codingdesign 
-*/
-
+ 
 
 @media print {
   .table, .table__body {
@@ -482,10 +445,32 @@ thead th.active,tbody td.active {
 
 <script>
   function showDetail(id) {
-    document.getElementById(id).style.display = "block";
+    $.ajax({
+        url: '<?php echo base_url(); ?>leaderboard/detailActivity',
+        method: 'post',
+        data: {idPegawai:id},
+        success:function(response){
+          // console.log(response);
+          var no=1;
+          $.each(response, function(index, activity) {
+            var row = '<tr>';
+            row += '<th>' + no + '</th>';
+            row += '<th>' + activity.nm_kegiatan + '</th>';
+            row += '<th>' + activity.tanggalAct + '</th>';
+            row += '<th>' + activity.durasiAct + '</th>';
+            row += '<th>' + activity.Point + '</th>';
+            row += '</tr>';
+            $("#tbody").append(row);
+            no++;
+          });
+          // $("#tbody").append("<tr><th>1</th><th>Mulaia</th><th>09-05-2024</th><th>20</th></tr>");
+          $("#detail1").show();
+        }
+    });
 }
 
 function closeDetail(id) {
+  $("#tbody").empty();
     document.getElementById(id).style.display = "none";
 }
 </script>

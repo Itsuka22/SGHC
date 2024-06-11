@@ -41,9 +41,9 @@ class Data_Pegawai extends CI_Controller {
 	public function tambah_data_aksi() {
 		$this->_rules();
 
-		if($this->form_validation->run() == FALSE) {
-			$this->tambah_data();
-		} else {
+		// if($this->form_validation->run() == FALSE) {
+		// 	$this->tambah_data();
+		// } else {
 			$nik			= $this->input->post('nik');
 			$nama_pegawai	= $this->input->post('nama_pegawai');
 			$username		= $this->input->post('username');
@@ -73,8 +73,8 @@ class Data_Pegawai extends CI_Controller {
 				'username' 		=> $username,
 				'password' 		=> $password,
 				'jenis_kelamin' => $jenis_kelamin,
-				'jabatan' 		=> $jabatan,
-				'tanggal_masuk' => $tanggal_masuk,
+				// 'jabatan' 		=> $jabatan,
+				// 'tanggal_masuk' => $tanggal_masuk,
 				'status' 		=> $status,
 				'hak_akses' 	=> $hak_akses,
 				'photo' 		=> $photo,
@@ -88,7 +88,7 @@ class Data_Pegawai extends CI_Controller {
 				</button>
 				</div>');
 			redirect('admin/data_pegawai');
-		}
+		// }
 
 	}
 

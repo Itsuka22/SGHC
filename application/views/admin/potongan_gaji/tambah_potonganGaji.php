@@ -1,13 +1,13 @@
 <form method="post" id="form">
     <div class="form-group">
         <label for="email">Potongan</label>
-        <input type="text" class="form-control"  name="potongan" placeholder="Masukan Potongan">
+        <input type="text" class="form-control"  name="potongan" id="potongan" placeholder="Masukan Potongan">
     </div>
     <div class="form-group">
         <label for="email">Jumlah</label>
         <input type="text" class="form-control"  name="jml_potongan" placeholder="Masukan Jumlah Potongan">
     </div>
-    <button id="tombol_tambah" type="button" class="btn btn-primary" data-dismiss="modal" >Tambah</button>
+    <!-- <button id="tombol_tambah" type="button" class="btn btn-primary" data-dismiss="modal" >Tambah</button> -->
 </form>
 <script type="text/javascript">
     $(document).ready(function(){

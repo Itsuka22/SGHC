@@ -11,34 +11,25 @@
 
 <div class="card" style="width: 60% ; margin-bottom: 100px">
 	<div class="card-body">
-		<?php foreach ($jabatan as $j): ?>
+		<?php foreach ($jns_kegiatan as $j): ?>
 		<form method="POST" action="<?php echo base_url('admin/data_jabatan/update_data_aksi')?>">
 			
 			<div class="form-group">
-				<label>Nama Jabatan</label>
-				<input type="hidden" name="id_jabatan" class="form-control" value="<?php echo $j->id_jabatan?>">
-				<input type="text" name="nama_jabatan" class="form-control" value="<?php echo $j->nama_jabatan?>">
+				<label>Jenis Kegiatan</label>
+				<input type="hidden" name="id_kegiatan" class="form-control" value="<?php echo $j->id_kegiatan?>">
+				<input type="text" name="jns_kegiatan" class="form-control" value="<?php echo $j->nm_kegiatan?>">
 				<?php echo form_error('nama_jabatan', '<div class="text-small text-danger"> </div>')?>
 			</div>
 
 			<div class="form-group">
 				<label>Gaji Pokok</label>
-				<input type="number" name="gaji_pokok" class="form-control" value="<?php echo $j->gaji_pokok?>">
-				<?php echo form_error('gaji_pokok', '<div class="text-small text-danger"> </div>')?>
+				<select name="status" class="form-control">
+					<option value="<?php echo $j->status?>"><?php if($j->status=1){echo "Aktif";}else{echo "Non Aktif";} ?></option>
+					<option value="1">Aktif</option>
+					<option value="0">Non Aktif</option>
+				</select>
+				<?php echo form_error('status', '<div class="text-small text-danger"> </div>')?>
 			</div>
-
-			<div class="form-group">
-				<label>Tunjangan Transport</label>
-				<input type="number" name="tj_transport" class="form-control" value="<?php echo $j->tj_transport?>">
-				<?php echo form_error('tj_transport', '<div class="text-small text-danger"> </div>')?>
-			</div>
-
-			<div class="form-group">
-				<label>Uang Makan</label>
-				<input type="number" name="uang_makan" class="form-control" value="<?php echo $j->uang_makan?>">
-				<?php echo form_error('uang_makan', '<div class="text-small text-danger"> </div>')?>
-			</div>
-
 			<button type="submit" class="btn btn-success" >Simpan</button>
 			<a href="<?php echo base_url('admin/data_jabatan')?>" class="btn btn-warning">Kembali</a>
 
