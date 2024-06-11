@@ -1,14 +1,7 @@
-Website Penggajian Karyawan Menggunakan Codeigniter 3
+# SG Healthy Challenges
 
-Fitur Admin
-1. CRUD Data Karyawan
-2. CRUD Data Jabatan
-3. Setting Potongan Gaji
-4. Tambah Data Absensi Karyawan
-5. Data Gaji
-6. Laporan Gaji
-7. Laporan Absensi
-8. Cetak Slip Gaji
+## Bagaimana SG Healthy Challenges Membantu Aktivitas Olahraga Pengguna
 
-Fitur Karyawan
-1. Cetak Slip Gaji
+### Pengenalan
+
+SG Healthy Challenges adalah aplikasi yang dirancang untuk membantu pengguna dalam mencapai tujuan kesehatan dan kebugaran mereka melalui berbagai tantangan yang menyenangkan dan memotivasi. Aplikasi ini menawarkan berbagai fitur yang dapat mendukung dan meningkatkan pengalaman olahraga pengguna, menjadikannya lebih terstruktur, terukur, dan menyenangkan.
