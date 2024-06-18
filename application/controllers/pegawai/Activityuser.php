@@ -1,5 +1,5 @@
 <?php
-class ActivityUser extends CI_Controller {
+class Activityuser extends CI_Controller {
 
 	function __construct()
     {
@@ -7,6 +7,7 @@ class ActivityUser extends CI_Controller {
         $this->load->model('ModelPotongan_Gaji');
         $this->load->model('ModelPenggajian');
         $this->load->model('ModelActivityUser');
+        $this->load->library('pagination');
         if($this->session->userdata('hak_akses') != '2'){
             $this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Anda Belum Login!</strong>
@@ -20,22 +21,57 @@ class ActivityUser extends CI_Controller {
 
 	function index()
 	{
-        $data['title'] = "";
         // print_r($this->session->userdata());
         // exit();
+        $id_karyawan=$this->session->userdata('id_pegawai');
+        $data['data']=$this->ModelActivityUser->get_data($id_karyawan)->result_object();
+
         $this->load->view('template_pegawai/header');
         $this->load->view('template_pegawai/sidebar');
-        $this->load->view('pegawai/list_activityUser', $data);
+        $this->load->view('pegawai/data_activityUser', $data);
         $this->load->view('template_pegawai/footer');
     }
 
     function TampilActivity()
     {
-        $id_karyawan=$this->session->userdata('id_pegawai');
-        $data['data']=$this->ModelActivityUser->get_data($id_karyawan)->result_object();
-        // print_r($data);
-        // exit();
-        $this->load->view('pegawai/data_activityUser',$data);
+        $id_karyawan = $this->session->userdata('id_pegawai');
+
+        // Pagination configuration
+        $config['base_url'] = base_url('Activityuser/TampilActivity');
+        $config['total_rows'] = $this->ModelActivityUser->get_count($id_karyawan); // Get total number of records
+        $config['per_page'] = 10; // Records per page
+        $config['uri_segment'] = 3; // Page number segment in URL
+
+        // Bootstrap pagination class
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['first_link'] = 'First';
+        $config['last_link'] = 'Last';
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_link'] = '&laquo';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+        $config['attributes'] = array('class' => 'page-link');
+
+        $this->pagination->initialize($config);
+
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['data'] = $this->ModelActivityUser->get_data($id_karyawan, $config['per_page'], $page);
+        $data['pagination'] = $this->pagination->create_links();
+
+        $this->load->view('pegawai/data_activityUser', $data);
+        
     }
 
     function tambah_activity()

@@ -18,5 +18,13 @@ class ModelActivityUser extends CI_model{
         $where";
         return $this->db->query($query);
     }
+
+    public function get_count($param) {
+        $query = "SELECT COUNT(*) AS count FROM tb_activity a 
+                  LEFT JOIN data_pegawai b ON a.id_pegawai = b.id_pegawai 
+                  WHERE b.id_pegawai = '$param'";
+
+        return $this->db->query($query)->row()->count;
+    }
 }
 ?>

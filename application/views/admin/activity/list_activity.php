@@ -26,5 +26,5 @@ $(document).ready(function() {
     <div id="tampil">
         <!-- Data tampil disini -->
 
-    <div align="center">        
+    <div align="">        
 </div>  
