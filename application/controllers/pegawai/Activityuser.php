@@ -21,11 +21,69 @@ class Activityuser extends CI_Controller {
 
 	function index()
 	{
-        // print_r($this->session->userdata());
-        // exit();
-        $id_karyawan=$this->session->userdata('id_pegawai');
-        $data['data']=$this->ModelActivityUser->get_data($id_karyawan)->result_object();
+        $id_karyawan = $this->session->userdata('id_pegawai');
 
+        $perPage = 6;
+        $page = 0;
+
+        // Get the current page number from the URL
+        $page = ($this->input->get('page')) ? $this->input->get('page') : 1;
+
+        // Calculate the offset for the query
+        $offset = ($page - 1) * $perPage;
+
+        $total_rows =0;
+        
+        
+        // Pagination configuration
+        $config['total_rows'] = $total_rows;
+        $config['base_url'] = base_url('pegawai/activityuser');
+        $config['total_rows'] = $this->ModelActivityUser->get_count($id_karyawan);
+        $config['per_page'] = $perPage; // Number of items per page
+        $config['uri_segment'] = 3;
+
+        // logic endpoint
+        $config['enable_query_strings'] = true;
+        $config['use_page_numbers'] = true;
+        $config['page_query_string'] = TRUE;
+        $config['query_string_segment'] = 'page';
+        $config['reuse_query_strings'] = TRUE;
+
+        // Bootstrap pagination style
+        $config['full_tag_open'] = '<nav aria-label="Page navigation"><ul class="pagination justify-content-center">';
+        $config['full_tag_close'] = '</ul></nav>';
+        $config['first_link'] = '&laquo; First';
+        $config['last_link'] = 'Last &raquo;';
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
+        $config['next_link'] = 'Next &raquo;';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+        $config['prev_link'] = '&laquo; Previous';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close'] = '<span class="sr-only">(current)</span></span></li>';
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+        $config['attributes'] = array('class' => 'page-link');
+
+        $this->pagination->initialize($config);
+
+        // Offset calculation
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data['data'] = $this->ModelActivityUser->get_data($id_karyawan, $config['per_page'], $offset);
+        $data['pagination'] = $this->pagination->create_links();
+        $data['current_page'] = $page;
+        $data['per_page'] = $perPage;
+
+        // print_r($data);
+        // exit();
+
+        // Load views
         $this->load->view('template_pegawai/header');
         $this->load->view('template_pegawai/sidebar');
         $this->load->view('pegawai/data_activityUser', $data);
@@ -34,41 +92,6 @@ class Activityuser extends CI_Controller {
 
     function TampilActivity()
     {
-        $id_karyawan = $this->session->userdata('id_pegawai');
-
-        // Pagination configuration
-        $config['base_url'] = base_url('Activityuser/TampilActivity');
-        $config['total_rows'] = $this->ModelActivityUser->get_count($id_karyawan); // Get total number of records
-        $config['per_page'] = 10; // Records per page
-        $config['uri_segment'] = 3; // Page number segment in URL
-
-        // Bootstrap pagination class
-        $config['full_tag_open'] = '<ul class="pagination">';
-        $config['full_tag_close'] = '</ul>';
-        $config['first_link'] = 'First';
-        $config['last_link'] = 'Last';
-        $config['first_tag_open'] = '<li class="page-item">';
-        $config['first_tag_close'] = '</li>';
-        $config['prev_link'] = '&laquo';
-        $config['prev_tag_open'] = '<li class="page-item">';
-        $config['prev_tag_close'] = '</li>';
-        $config['next_link'] = '&raquo';
-        $config['next_tag_open'] = '<li class="page-item">';
-        $config['next_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li class="page-item">';
-        $config['last_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li class="page-item">';
-        $config['num_tag_close'] = '</li>';
-        $config['attributes'] = array('class' => 'page-link');
-
-        $this->pagination->initialize($config);
-
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-
-        $data['data'] = $this->ModelActivityUser->get_data($id_karyawan, $config['per_page'], $page);
-        $data['pagination'] = $this->pagination->create_links();
 
         $this->load->view('pegawai/data_activityUser', $data);
         

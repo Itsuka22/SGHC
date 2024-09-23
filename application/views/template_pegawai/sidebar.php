@@ -24,7 +24,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('pegawai/activityuser') ?>">
-          <i class="fas fa-fw fa-money-check-alt"></i>
+          <i class="fas fa-fw fa-running"></i>
           <span>Entry Activity</span></a>
       </li>
 

@@ -1,12 +1,13 @@
 <div class="container-fluid">
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><?php echo $title?></h1>
+        <div id="tampil">
+
+        </div>
+
   </div>
 </div>
 
-
-<script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -21,10 +22,3 @@ $(document).ready(function() {
 
 });
 </script>
-
-<div class='container'>
-    <div id="tampil">
-        <!-- Data tampil disini -->
-
-    <div align="center">        
-</div>  

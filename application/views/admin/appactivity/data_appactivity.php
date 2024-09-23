@@ -1,5 +1,5 @@
-
-<div class="modal fade" id="myModal">
+<div class="container-fluid">
+  <div class="modal fade" id="myModal">
         <div class="modal-dialog">
             <div class="modal-content">
             <!-- Modal Header -->
@@ -26,76 +26,82 @@
         </div>
     </div>
 
-<div class="row">
-    <div class="col-lg-4 col-lg-offset-4">
-        <input id="myInput" class="form-control" type="text"placeholder="Search..">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <input id="myInput" class="form-control" type="text"placeholder="Search..">
+        </div>
     </div>
-</div>
-<br>
-<div class="card shadow mb-4">
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>No</th>
-                        <th>Karyawan</th>
-                        <th>Tanggal</th>
-                        <th>Durasi</th>
-                        <th>Kegiatan</th>
-                        <th>File</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        $no=1;
-                        foreach ($data as $item)
-                        {
-                    ?>
-                    <tr>
-                        <td><?php echo $no;?></td>
-                        <td><?php echo $item->nama_pegawai;?></td>
-                        <td><?php echo $item->tanggalAct;?></td>
-                        <td><?php echo $item->durasiAct;?></td>
-                        <!-- <td><?php echo $item->durasiAct;?></td> -->
-                        <td><?php echo $item->nm_kegiatan;?></td>
-                        <td><img src="<?php echo base_url().'photo/'.$item->photoAct;?>" width="400px"/></td>
-                        <td>
-                            <?php if($item->statusAct==0)
+    <br>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>No</th>
+                            <th style="width: 13%;">Karyawan</th>
+                            <th>Tanggal</th>
+                            <th>Durasi</th>
+                            <th>Kegiatan</th>
+                            <th>File</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $no=1;
+                            foreach ($data as $item)
                             {
-                                echo "<b>Data On Review</b>";
-                            }elseif($item->statusAct==2)
-                            {
-                                echo "<b><font color='Red'>Data Rejected</font></b>";
-                            }else{
-                                echo "<b>Data Approved</b>";
-                            }?>
-                        </td>
-                        <td>
-                            <?php if($item->statusAct==0)
-                            {
-                               ?>
-                               <button type="button" activity="<?php echo $item->id_activity; ?>" class="app bi bi-check-lg"><i class="fas fa-edit"></i></button>
-                               <button type="button" activity="<?php echo $item->id_activity; ?>" data-target="#myModal" class="reject bi bi-trash"><i class="fas fa-trash"></i></button>
-                               <?php
-                            }elseif($item->statusAct==2)
-                            {
-                                ?>
-                                <button type="button" activity="<?php echo $item->id_activity; ?>" class="app bi bi-check-lg"><i class="fas fa-edit"></i></button>
-                                <?php
-                                echo "<br><b>".$item->reasonAct."</b>";
-                            }?>
-                        
-                        </td>
-                    </tr>
-                    <?php
-                        $no++;
-                        }
-                    ?>
-                </tbody>
-            </table>
+                        ?>
+                        <tr>
+                            <td><?php echo $no;?></td>
+                            <td><?php echo $item->nama_pegawai;?></td>
+                            <td><?php echo $item->tanggalAct;?></td>
+                            <td><?php echo $item->durasiAct;?></td>
+                            <!-- <td><?php echo $item->durasiAct;?></td> -->
+                            <td><?php echo $item->nm_kegiatan;?></td>
+                            <td><img src="<?php echo base_url().'photo/'.$item->photoAct;?>" width="400px"/></td>
+                            <td>
+                                <?php if($item->statusAct==0)
+                                {
+                                    echo "<b>Data On Review</b>";
+                                }elseif($item->statusAct==2)
+                                {
+                                    echo "<b><font color='Red'>Data Rejected</font></b>";
+                                }else{
+                                    echo "<b>Data Approved</b>";
+                                }?>
+                            </td>
+                            <td>
+                                <?php if($item->statusAct==0)
+                                {
+                                  ?>
+                                  <button type="button" activity="<?php echo $item->id_activity; ?>" class="app btn btn-sm btn-success"><i class="fas fa-edit"></i><br>Setujui</br></button>
+                                  <button type="button" activity="<?php echo $item->id_activity; ?>" data-target="#myModal" class="reject btn btn-sm btn-danger"><i class="fas fa-times"></i><br>Tolak</br></button>
+                                  <?php
+                                }elseif($item->statusAct==2)
+                                {
+                                    ?>
+                                    <button type="button" activity="<?php echo $item->id_activity; ?>" class="app btn btn-sm btn-success"><i class="fas fa-edit"></i>Setujui</button>
+                                    <?php
+                                    echo "<br><b>".$item->reasonAct."</b>";
+                                }?>
+                            
+                            </td>
+                        </tr>
+                        <?php
+                            $no++;
+                            }
+                        ?>
+                    </tbody>
+                </table>
+                <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            <?php echo $pagination; ?>
+                        </ul>
+                  </nav>
+            </div>
         </div>
     </div>
 </div>

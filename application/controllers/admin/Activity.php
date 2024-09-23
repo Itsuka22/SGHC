@@ -20,18 +20,20 @@ class Activity extends CI_Controller {
 
 	function index()
 	{
-        $data['title'] = "";
+        // $data['title'] = "";
+        $data['data']=$this->ModelActivity->get_dataact()->result_object();
+
 
         $this->load->view('template_admin/header');
         $this->load->view('template_admin/sidebar');
-        $this->load->view('admin/activity/list_activity', $data);
+        $this->load->view('admin/activity/data_activity', $data);
         $this->load->view('template_admin/footer');
     }
 
     function TampilActivity()
     {
-        $data['data']=$this->ModelActivity->get_data()->result_object();
-        $this->load->view('admin/activity/data_activity',$data);
+        // $data['data']=$this->ModelActivity->get_data()->result_object();
+        // $this->load->view('admin/activity/data_activity',$data);
     }
 
     function tambah_activity()

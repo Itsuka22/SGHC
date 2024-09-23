@@ -87,7 +87,7 @@
                         </tbody>
                     </table>
                     <div class="pagination-links">
-                        <?php echo isset($pagination) ? $pagination : ''; ?>
+                        <?php echo $pagination  ?>
                     </div>
                 </div>
             </div>
@@ -117,54 +117,6 @@ $(document).ready(function() {
 
 <script>
 
-    // $(document).ready(function() {
-    //     $('#dataTable').DataTable({
-    //     "processing": true,
-    //     "serverSide": true,
-    //     "ajax": {
-    //     "url": "<?php echo base_url(); ?>pegawai/activityuser/TampilActivity",
-    //     "type": "POST"
-    //     },
-    //     "columns": [
-    //     { "data":  "id_activity"},
-    //     { "data": "nama_pegawai" },
-    //     { "data": "tanggalAct" },
-    //     { "data": "nm_kegiatan" },
-    //     { 
-    //         "data": "photoAct",
-    //         "render": function(data, type, row) {
-    //         return '<img src="<?php echo base_url(); ?>photo/' + data + '" width="100"/>';
-    //         }
-    //     },
-    //     { 
-    //         "data": "statusAct",
-    //         "render": function(data, type, row) {
-    //         if (data == 0) return "<b>Data On Review</b>";
-    //         if (data == 2) return "<b><font color='Red'>Data Rejected</font></b>";
-    //         return "<b>Data Approved</b>";
-    //         }
-    //     },
-    //     {
-    //         "data": null,
-    //         "render": function(data, type, row) {
-    //         if (row.statusAct == 1) {
-    //             return '<b>The data cannot be changed</b>';
-    //         } else {
-    //             let buttons = '';
-    //             if (row.statusAct == 0) {
-    //             buttons += `<button type="button" activity="${row.id}" class="edit btn btn-sm btn-info"><i class="fas fa-edit"></i></button>`;
-    //             buttons += `<button type="button" activity="${row.id}" class="hapus btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>`;
-    //             } else if (row.statusAct == 2) {
-    //             buttons += `<button type="button" activity="${row.id}" class="edit btn btn-sm btn-info"><i class="fas fa-edit"></i></button>`;
-    //             buttons += `<span><b>${row.reasonAct}</b></span>`;
-    //             }
-    //             return `<div style="display: flex; flex-direction: column; align-items: flex-start;">${buttons}</div>`;
-    //         }
-    //         }
-    //     }
-    //     ]
-    // });
-    // });
     $(document).ready(function(){
         $('.tambah').click(function(){
         var aksi = 'Tambah Potongan Gaji';
@@ -178,7 +130,7 @@ $(document).ready(function() {
                 document.getElementById("judul").innerHTML='';
 
             }
-        });
+            });
         });
 
         $('.edit').click(function(){
@@ -214,23 +166,3 @@ $(document).ready(function() {
     });
 </script>
 
-<!-- <style>
-    .table td div {
-        display: flex;
-        align-items: center;
-    }
-    .table td div span {
-        margin-top: 5px;
-        color: red;
-    }
-
-    .action-buttons {
-        display: flex;
-        gap: 5px;
-        justify-content: center;
-        align-items: center;
-    }
-    .action-buttons .btn {
-        margin: 0 2px;
-    }
-</style> -->
